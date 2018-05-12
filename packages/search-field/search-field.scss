@@ -1,0 +1,23 @@
+.search-field{
+	width: 600px;
+	height: 40px;
+
+	padding: 5px 25px;
+	padding-left: 100px;
+	margin-top: 50px;
+
+	border-radius: 50px;
+	border: 1px solid #B7BCC2;
+
+	outline:none;
+
+	display: inline-block;
+
+	background: #fff url(../search-field/loupe.png) no-repeat 2% 50%;
+	background-size: 10%;
+}
+
+.search-text{
+	font-size: 15px;
+	color: #444;
+}

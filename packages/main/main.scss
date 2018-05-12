@@ -1,0 +1,29 @@
+@import 'packages/menu/menu.scss';
+@import 'packages/content/content.scss';
+
+*{  
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.main{
+  margin: 0 auto;
+
+  width: 1200px;
+  height: 100%;
+  
+}
