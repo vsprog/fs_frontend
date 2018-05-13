@@ -1,0 +1,15 @@
+@import 'packages/search-field/search-field.scss';
+@import 'packages/mini-movie/mini-movie.scss';
+
+.error-message{
+	font-weight: bold;
+	font-size: 25px;
+	color: red;
+}
+
+.main-page-container{
+	display: flex;	
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+}

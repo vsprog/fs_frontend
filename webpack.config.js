@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, 'packages'),
-  entry: ['react-hot-loader/patch', './core/init.js', './main/main.scss'],
+  entry: ['react-hot-loader/patch', './core/init.js', './core/main.scss'],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
@@ -53,6 +53,7 @@ module.exports = {
               loader: 'css-loader',
               options: { sourceMap: true, minimize: true },
             },
+            { loader: 'resolve-url-loader' },
             {
               loader: 'sass-loader',
               options: { sourceMap: true },
@@ -89,5 +90,6 @@ module.exports = {
     contentBase: './dist',
     historyApiFallback: true,
     hot: true,
+    proxy: { '/api': 'http://localhost:3000' },
   },
 };

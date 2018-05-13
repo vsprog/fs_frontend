@@ -1,5 +1,6 @@
 @import 'packages/menu/menu.scss';
 @import 'packages/content/content.scss';
+@import 'packages/full-movie/full-movie.scss';
 
 *{  
   margin: 0;
@@ -26,4 +27,8 @@ html, body {
   width: 1200px;
   height: 100%;
   
+}
+
+#root{
+  height: 100%;
 }
