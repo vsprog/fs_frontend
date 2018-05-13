@@ -10,7 +10,8 @@ class FullMovie extends React.Component{
     //	let { Title, Year, Poster, imdbID } = this.props.objMovie;	    	
       return (
       	<div>
-      		
+      		описание фильма
+          {this.props.description.title}
       	</div>
       );
     }
