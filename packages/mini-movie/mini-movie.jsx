@@ -36,12 +36,14 @@ class MiniMovie extends React.Component{
     	if (Poster==="N/A") Poster = Na;
       return (
       	<div className="mini-movie" onClick={this.uploadHandler.bind(this, imdbID)}>
-      		<img src = {Poster} align='middle' alt='poster' />
+      		<img src = {Poster} align='middle' alt='poster' className="mini-movie__poster"/>
       		<div className="mini-movie__title">{Title}</div>
       		<div className="mini-movie__year">{Year}</div>
       	</div>
       );
     }
 }
+
+MiniMovie.propTypes = propTypes;
 
 module.exports = MiniMovie;

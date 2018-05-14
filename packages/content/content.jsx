@@ -9,7 +9,7 @@ const Content = () => (
 
     <div className = 'content'>
       <Route path="/" exact component={MainPage} />
-      <Route path="/bookmarks" exact component={Bookmarks} />
+      <Route path="/bookmarks" component={Bookmarks} />
       <Route path="/about" component={About} />
     </div>
 
