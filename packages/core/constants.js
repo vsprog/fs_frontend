@@ -12,5 +12,5 @@ module.exports.responseStatuses = {
 module.exports.omdbapi = {
   apiKey: 'ed932106',
   page: 1,
-  plot: "full"
+  plot: "short"  // short  full
 };

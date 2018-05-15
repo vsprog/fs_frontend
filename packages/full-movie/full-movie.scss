@@ -1,56 +1,218 @@
 .full-movie{
-	z-index: 2;
-	
+	position: absolute;
+	top: 0;
+	left: 0;
+
 	display: flex;
 	align-items: center;
 
-	position: absolute;
-	left: 0;
-	top: 0;
-
 	width: 1190px;
-	height: 100%;	
-
-	background-color: rgba(0,0,0,.3);
-
-	color: white;	
+	height: 100%;
 
 	transition: left .5s ease;
 
+	color: white;
+	background-color: rgba(0,0,0,.3);
+
+	&__container{
+		position: relative;
+
+		clear: both;
+
+		width: 100%;
+
+		text-align: left;
+
+		background-color: #333;
+
+		font: normal 16px "Century Gothic";
+	}
+
+	&__title{
+		margin: 30px;
+		margin-bottom: 0;
+
+		font-size: 42px;
+		line-height: 50px;
+	}
+
+	&__plot{
+		display: inline-block;
+
+		width: 550px;		
+
+		font-size: 18px;
+		line-height: 20px;
+	}
+
+	&__bookmark{
+		right: 100px;
+	}
+
+	&__close{
+		right: 30px;
+
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50%;
+		outline:none;
+		background: rgba(0,0,0,0);
+
+		font-size: 30px;
+	}
+
+	&__poster{
+		float: left;
+
+		margin: 0 30px;
+		margin-bottom: 30px;
+		padding: 10px;
+
+		border: 2px solid #D2D7D7;
+		border-radius: 3px;
+	}
+
+	&__info{
+		margin: 10px 40px;
+		margin-bottom: 30px;
+	}
 }
 
+.line{
+	margin: 10px 0;
+}
 
+.button{
+	position: absolute;
+	top: 30px;
 
-.full-movie__button{
 	width: 50px;
 	height: 50px;
-
-	position: absolute;
-	top: 0;
-	right: 0;
 }
 
-.full-movie__container{
-	height: 790px;
-	width: 100%;
+.rating{
+	&__imdb{
+		float: left;
 
-	background-color: #333;
-
-	clear: both;
-
-	text-align: left;
-}
-
-.full-movie__title{
-	font: normal 42px/50px "Century Gothic";
+		margin: 10px;
 	
-	margin: 30px;
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 48px;
+	}
+
+	&__pic1{
+		width: 75px;
+		height: 65px;
+
+		text-align: center;
+		display: inline-block;
+
+		color: black;
+		background: url('./star.png') no-repeat;
+		background-size: 100% 100%;
+
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 2.8em;
+	}
+
+	&__pic2{
+		float: left;
+
+		width: 70px;
+		height: 70px;
+
+		background: url('./tomatoes.png') no-repeat;
+		background-size: 100% 100%;
+	}
+
+	&__pic3{
+		float: left;
+
+		width: 450px;
+		height: 90px;
+		margin-top: 10px;
+
+		background: url('./metacritic.png') no-repeat;
+		background-size: 100% 100%;
+
+	}
+
+	&__tomatometer{
+		display: inline-block;
+		margin: 10px 50px;
+	}
+
+	&__meta{
+		display: inline-block;
+		float: left;
+
+		width: 75px;
+		height: 75px;
+		margin: 20px 0;
+		margin-left: 20px;
+
+		text-align: center;
+
+		color: #2D2825;
+		background: #FFFE02;
+
+		font-size: 40px;
+		font-weight: bold;
+		line-height: 2em;
+	}
 }
 
-.full-movie__poster{
-	margin: 0 30px;
-	padding: 3px;
+.tomatometer{
+	&__sign{
+		text-transform: uppercase;
 
-	border: 2px solid #D2D7D7;
-	border-radius: 3px;
+		font-size: 16px;
+	}
+	&__bar{
+		 position: relative;
+
+	   width: 130px;
+		 height: 15px;
+		 margin: 10px 0;
+
+		 border-radius: 50px;
+		 background: #fff;
+	}
+	&__position{
+		position: absolute;
+
+		width: 10%;
+   	height: 15px;
+
+   	border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+   	background: #C14339;
+	}
+}
+
+.cast{
+	position: absolute;
+	top: 100px;
+	right: 80px;
+
+	list-style-position: inside;
+	list-style-type: none;
+
+	&__header{
+		padding: 10px 0;
+
+		font-size: 20px;
+	}
+
+	&__main{
+		font-size: 12px;
+	}
+
+	&__surname{
+		padding: 10px 0;
+
+		font-size: 16px;
+	}
 }

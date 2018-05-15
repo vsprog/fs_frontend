@@ -1,12 +1,3 @@
-.mini-movie__poster{
-	width: 200px;
-	height: 300px;
-	padding: 3px;
-
-	border: 2px solid #D2D7D7;
-	border-radius: 3px;
-}
-
 .mini-movie{
 	display: inline-block;
 
@@ -15,10 +6,21 @@
 	width: 210px;
 	height: 400px;	
 
-	font-size: 18px;
+	font: normal 18px/25px Arial;
 	word-wrap: break-word;
+
+	&__title{
+		font-weight: bold;
+	}
+
+	&__poster{
+		width: 200px;
+		height: 300px;
+		padding: 3px;
+
+		border: 2px solid #D2D7D7;
+		border-radius: 3px;
+	}
+
 }
 
-.mini-movie__title{
-	font-weight: bold;
-}

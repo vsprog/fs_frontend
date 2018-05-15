@@ -1,9 +1,24 @@
 const React = require('react');
 
-const Bookmarks = () => (
-  <div className="about">
-    Bookmarks
-  </div>
-);
+class Bookmarks extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {list: "", fullMovie: "" };
+
+        this.moviePopup = React.createRef();
+    }
+
+
+    render() {
+    	return(
+    		<div className="about">
+			    Bookmarks
+			  </div>
+    	);
+    }
+ }   
+  
+
 
 module.exports = Bookmarks;

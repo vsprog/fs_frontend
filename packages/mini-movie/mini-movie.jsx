@@ -1,7 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const { apiKey, plot } = require('core/constants.js').omdbapi;
-import Na from '../mini-movie/No_Image_Available.png';
+import Na from './No_Image_Available.png';
 
 const propTypes = {
   uploadMovie: PropTypes.func.isRequired,

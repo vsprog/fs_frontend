@@ -1,16 +1,16 @@
 @import 'packages/main-page/main-page.scss';
+@import 'packages/search/search.scss';
 
 .content{
-	background: #EFEFEF;
-
-	margin-left: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
 
 	height: 100%;
+	margin-left: 300px;
 
 	text-align: center;
 
-	overflow-y: scroll;
-	overflow-x: hidden;
+	background: #EFEFEF;
 
 	&::-webkit-scrollbar {
     width: 10px;
