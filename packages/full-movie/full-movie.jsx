@@ -1,6 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const { Link } = require('react-router-dom');
+const createRequest = require('core/create-request');
 import bookmark from './mark.png';
 import bookmark_active from './mark_active.png';
 import Na from 'mini-movie/No_Image_Available.png';
@@ -13,10 +14,16 @@ class FullMovie extends React.Component{
 
     constructor(props){
         super(props);
-        this.state={left: 0};
+        this.state={left: 0, markImg: bookmark, movies:[] };
 
         this.move = this.move.bind(this);
-        this.show = this.show.bind(this);
+        this.show = this.show.bind(this);        
+    }
+
+    componentDidMount() {
+      createRequest('getMovies').then((response) => {
+        this.setState({ movies: response.data || [] });
+      });
     }
 
     move(e){
@@ -24,7 +31,30 @@ class FullMovie extends React.Component{
     }
 
     show(){
-      this.setState({ left: 0 });    
+      this.setState({ left: 0 }); 
+    }
+
+    onStar(){
+      this.setState({ markImg: bookmark_active});
+    }
+
+    offStar(){
+      this.setState({ markImg: bookmark});
+    }
+
+    toggleMark(movie, e){
+      let { movies } = this.state;
+      let cinema = movies.find((item) => item.imdbID === movie.imdbID);
+      
+      if(cinema){
+        createRequest('deleteMovie', { /*movie.imdbID*/ }).then((response) => {        
+          this.setState({movies: response.data || [], markImg: bookmark});
+        });   
+      }else {
+        createRequest('addMovie', {}, { movie }).then((response) => {        
+          this.setState({markImg: bookmark_active});
+        });
+      }
     }
 
     render() {
@@ -43,7 +73,7 @@ class FullMovie extends React.Component{
               {Genre} | {Runtime} | {Released} ({Country})
             </div>
           <button className="full-movie__close button" onClick={this.move}>X</button>
-          <img className="full-movie__bookmark button" src={path + bookmark} align='middle' alt='mark' />
+          <img onClick={this.toggleMark.bind(this, this.props.description)} className="full-movie__bookmark button" src={path + this.state.markImg} align='middle' alt='mark' />
           <img src = {Poster} align='middle' alt='poster' className="full-movie__poster" />
           <div className="full-movie__plot">{Plot}</div>
            

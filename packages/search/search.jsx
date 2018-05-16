@@ -3,14 +3,21 @@ const { Route,  Link } = require('react-router-dom');
 const SearchField = require('search-field/search-field.jsx');
 const MiniMovie = require('mini-movie/mini-movie.jsx');
 const FullMovie = require('full-movie/full-movie.jsx');
+const createRequest = require('core/create-request');
 
 class Search extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {list: "", fullMovie: "" };
+        this.state = {list: "", fullMovie: "", movies:[] };
 
         this.moviePopup = React.createRef();
+    }
+
+    componentDidMount() {
+      createRequest('getMovies').then((response) => {
+        this.setState({ movies: response.data || [] });
+      });
     }
 
     takeMovie(responseResult){
@@ -20,6 +27,12 @@ class Search extends React.Component{
     uploadMovie(incoming){
 			 	this.setState({ fullMovie: incoming });			 	
 			 	this.moviePopup.current.show();
+
+        let { movies, fullMovie } = this.state;
+
+        let cinema = Array.from(movies).find((item) => item.imdbID === fullMovie.imdbID);        
+        if(cinema) this.moviePopup.current.onStar();
+        else this.moviePopup.current.offStar();
     }
 
     render() {

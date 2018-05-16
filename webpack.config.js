@@ -29,7 +29,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -90,6 +90,10 @@ module.exports = {
     contentBase: './dist',
     historyApiFallback: true,
     hot: true,
-    proxy: { '/api': 'http://localhost:3000' },
+    //proxy: { '/bookmarks': 'http://localhost:3000' },
+    proxy: [{
+      context: ["/bookmarks", "/search"],
+      target: "http://localhost:3000",
+    }],
   },
 };
