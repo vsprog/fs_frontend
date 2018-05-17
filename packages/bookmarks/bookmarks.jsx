@@ -12,7 +12,7 @@ class Bookmarks extends React.Component{
     }
 
     componentDidMount() {
-	    createRequest('fetchMovies').then((response) => {
+	    createRequest('fetchBookmarks').then((response) => {
 	      this.setState({ movies: response.data || [] });
 	    });   
   	}

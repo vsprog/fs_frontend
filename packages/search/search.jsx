@@ -9,53 +9,71 @@ class Search extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {list: "", fullMovie: "", movies:[] };
+        this.state = {movies: "", fullMovie: "", bookmarks:[] };
 
-        this.moviePopup = React.createRef();
+        this.toggleMark = this.toggleMark.bind(this);
+
+        this.moviePopup = null;//React.createRef();
     }
 
-    componentDidMount() {
-      createRequest('getMovies').then((response) => {
-        this.setState({ movies: response.data || [] });
+    componentDidMount() {    
+      createRequest('searchMovies').then((response) => {
+        this.setState({ bookmarks: response.data || [] });
       });
     }
 
     takeMovie(responseResult){
-		   this.setState({ list: responseResult });
+		   this.setState({ movies: responseResult });
+    }
+ 
+    toggleMark(movie){
+      let { bookmarks } = this.state;
+      let bookmark = bookmarks.find((item) => item.imdbID === movie.imdbID);
+      let imdbID=movie.imdbID;
+
+      if (bookmark){      
+        this.moviePopup.offStar();
+        createRequest('deleteMovie', { imdbID }).then((response) => {
+          this.setState({bookmarks: response.data || []});
+        });
+      } else {        
+        this.moviePopup.onStar();
+        createRequest('addMovie', {}, { movie }).then((response) => {
+          this.setState({bookmarks: response.data || []});
+        });
+      }
     }
 
-    uploadMovie(incoming){
-			 	this.setState({ fullMovie: incoming });			 	
-			 	this.moviePopup.current.show();
+    showFullMoviePopup(incoming){        
+      this.setState({ fullMovie: incoming }); 
+      this.moviePopup.toggleView();  //current.toggleView()
 
-        let { movies, fullMovie } = this.state;
-
-        let cinema = Array.from(movies).find((item) => item.imdbID === fullMovie.imdbID);        
-        if(cinema) this.moviePopup.current.onStar();
-        else this.moviePopup.current.offStar();
+      let { bookmarks } = this.state;
+      let bookmark = Array.from(bookmarks).find((item) => item.imdbID === incoming.imdbID);        
+      bookmark ? this.moviePopup.onStar() : this.moviePopup.offStar();       
+        
     }
 
     render() {
       return (
       	<div className="main-page">
-      		<SearchField takeMovie={this.takeMovie.bind(this)}/>         
+      		<SearchField takeMovie={this.takeMovie.bind(this)} />
    				{
-   					this.state.list.Response==='False' && <div className="error-message">{this.state.list.Error}</div>
+   					this.state.movies.Response==='False' && <div className="error-message">{this.state.movies.Error}</div>
    				}
-					{ this.state.list.Response==='True' &&
+					{ this.state.movies.Response==='True' &&
 						<div className="main-page__container">
-						{this.state.list.Search.map(movie => (
+						{this.state.movies.Search.map(movie => (
 							<Link key={movie.imdbID} to={`/search/${movie.imdbID}`} className="main-page__link">
-								<MiniMovie key={movie.imdbID} objMovie={movie} uploadMovie={this.uploadMovie.bind(this)} />
+								<MiniMovie key={movie.imdbID} objMovie={movie} showFullMoviePopup={this.showFullMoviePopup.bind(this)} />
 							</Link>
 						))}
 						</div>
 					}
 					{
-						(this.state.fullMovie.Title) ?  
-          //  <FullMovie description={this.state.fullMovie} ref={this.moviePopup}/>
+						(this.state.fullMovie.Title) ?          
               <Route path="/search/:id" render={(props) => (
-                <FullMovie {...props} description={this.state.fullMovie} ref={this.moviePopup}/>
+                <FullMovie {...props} toggleMark = {this.toggleMark} description={this.state.fullMovie} ref={(c)=>{this.moviePopup=c }}/>
               )} /> : null
 					}
       	</div>

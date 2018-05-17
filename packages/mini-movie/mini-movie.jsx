@@ -4,7 +4,7 @@ const { apiKey, plot } = require('core/constants.js').omdbapi;
 import Na from './No_Image_Available.png';
 
 const propTypes = {
-  uploadMovie: PropTypes.func.isRequired,
+  showFullMoviePopup: PropTypes.func.isRequired,
   objMovie: PropTypes.object.isRequired,
 };
 
@@ -26,7 +26,7 @@ class MiniMovie extends React.Component{
       })
       .then(result => {
         console.log(result);
-        this.props.uploadMovie(result);
+        this.props.showFullMoviePopup(result);
       })
       .catch(error => console.log(error));   
     }

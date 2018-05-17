@@ -90,10 +90,10 @@ module.exports = {
     contentBase: './dist',
     historyApiFallback: true,
     hot: true,
-    //proxy: { '/bookmarks': 'http://localhost:3000' },
-    proxy: [{
-      context: ["/bookmarks", "/search"],
-      target: "http://localhost:3000",
-    }],
+    proxy: { '/api': 'http://localhost:3000' },
+    // proxy: [{
+    //   context: ["/bookmarks", "/search"],
+    //   target: "http://localhost:3000",
+    // }],
   },
 };

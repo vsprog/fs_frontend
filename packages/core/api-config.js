@@ -1,36 +1,41 @@
 module.exports = {
-  getMovies: {
-    path: '/search',
+  searchMovies: {
+    path: '/api/search',
     method: 'GET',
   },
 
-  fetchMovies: {
-    path: '/bookmarks',
+  fetchBookmarks: {
+    path: '/api/bookmarks',
     method: 'GET',
   },
 
-  fetchMovie: {
-    path: '/bookmarks/:imdbID',
+  fetchBookmark: { 
+    path: '/api/bookmarks/:imdbID',
     method: 'GET',
   },
 
   addMovie: {
-    path: '/search/:imdbID',
+    path: '/api/search',    
+    method: 'POST',
+  },
+
+  addMovie: {    
+     path: '/api/bookmark',
     method: 'POST',
   },
 /*
   updateMovie: {
-    path: '/api/v001/tasks/:id',
+    path: '/api/search/:id',
     method: 'PATCH',
   },
 */
   deleteMovie: {
-    path: '/search/:imdbID',
+    path: '/api/search/:imdbID',
     method: 'DELETE',
   },
 
   deleteBookmark: {
-    path: '/bookmarks/:imdbID',
+    path: '/api/bookmarks/:imdbID',
     method: 'DELETE',
   },
 };
