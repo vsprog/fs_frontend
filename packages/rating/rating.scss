@@ -1,0 +1,111 @@
+.line{
+	margin: 10px 0;
+}
+
+.rating{
+	&__title{
+		float: left;
+
+		margin: 10px;
+	
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 48px;
+	}
+
+	&__pic-imdb{
+		width: 75px;
+		height: 65px;
+
+		text-align: center;
+		display: inline-block;
+
+		color: black;
+		background: url('./star.png') no-repeat;
+		background-size: 100% 100%;
+
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 2.8em;
+	}
+
+	&__pic-tomat{
+		float: left;
+
+		width: 70px;
+		height: 70px;
+
+		background: url('./tomatoes.png') no-repeat;
+		background-size: 100% 100%;
+	}
+
+	&__pic-metacr{
+		float: left;
+
+		width: 450px;
+		height: 90px;
+		margin-top: 10px;
+
+		background: url('./metacritic.png') no-repeat;
+		background-size: 100% 100%;
+
+	}
+
+	&__tomatometer{
+		display: inline-block;
+		margin: 10px 50px;
+	}
+
+	&__meta{
+		display: inline-block;
+		float: left;
+
+		width: 90px;
+		height: 90px;
+		margin: 20px 0;
+		margin-left: 20px;
+		padding-top: 13px;
+
+		text-align: center;
+
+		color: #2D2825;
+		background: #FFFE02;
+
+		font-size: 40px;
+		font-weight: bold;
+		line-height: 1em;
+	}
+
+	&__sign{
+		color: #2D2825;
+		font-size: 15px;
+	}
+}
+
+.tomatometer{
+	&__sign{
+		text-transform: uppercase;
+
+		font-size: 16px;
+	}
+	&__bar{
+		 position: relative;
+
+	   width: 130px;
+		 height: 15px;
+		 margin: 10px 0;
+
+		 border-radius: 50px;
+		 background: #fff;
+	}
+	&__position{
+		position: absolute;
+
+		width: 10%;
+   	height: 15px;
+
+   	border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+   	background: #C14339;
+	}
+}

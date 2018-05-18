@@ -2,6 +2,7 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const { Link } = require('react-router-dom');
 const createRequest = require('core/create-request');
+const Rating = require('rating/rating');
 import star from './mark.png';
 import star_active from './mark_active.png';
 import Na from 'mini-movie/No_Image_Available.png';
@@ -15,16 +16,16 @@ class FullMovie extends React.Component{
 
     constructor(props){
         super(props);
-        this.state={left: "1210px", markImg: star };
+        this.state={top: "-100%", markImg: star };
 
         this.toggleView = this.toggleView.bind(this);
     }
 
     toggleView(e){
-      if (this.state.left === "1210px") {
-        this.setState({ left: 0 }); 
+      if (this.state.top === "-100%") { //1210px
+        this.setState({ top: 0 }); 
       } else{
-        this.setState({ left: "1210px" });
+        this.setState({ top: "-100%" });
       }
     }
 
@@ -46,7 +47,8 @@ class FullMovie extends React.Component{
 
       if (Poster==="N/A") Poster = path + Na;
       return (
-        <div className="full-movie" style={{left: this.state.left}}>
+      <div className="fixed-container" style={{top: this.state.top}}>  
+        <div className="full-movie">
           <div className="full-movie__container">
             <div className="full-movie__title">{Title}</div>
             <div className="full-movie__info">
@@ -56,37 +58,9 @@ class FullMovie extends React.Component{
           <img onClick={toggleMark.bind(null, this.props.description)} className="full-movie__bookmark button" src={path + this.state.markImg} align='middle' alt='mark' />
           <img src = {Poster} align='middle' alt='poster' className="full-movie__poster" />
           <div className="full-movie__plot">{Plot}</div>
-
-          {Ratings[0] &&
-          <div>
-            <hr className="line" align="left" width="550" size="1" color="#d8d8d8"/>
-            <div className="rating__imdb">IMDb</div>
-            <div className="rating__pic1">{Ratings[0].Value.split('/')[0]}</div>
-          </div>
-          }
-          {Ratings[1] &&
-          <div>
-            <hr className="line" align="left" width="550" size="1" color="#d8d8d8"/>
-            <div className="rating__pic2"></div>
-            <div className="rating__imdb">{Ratings[1].Value}</div>
-            <div className="rating__tomatometer tomatometer">
-              <div className="tomatometer__sign">tomatometer</div>
-              <div className="tomatometer__bar">
-                <div className="tomatometer__position" style={{width: Ratings[1].Value}}></div>
-              </div>
-            </div>
-          </div>
-          }
-          {Ratings[2] &&
-          <div>
-            <hr className="line" align="left" width="550" size="1" color="#d8d8d8"/>
-            <div className="rating__meta">{Ratings[2].Value.split('/')[0]}
-              <div className="rating__sign">out of 100</div>
-            </div>
-            <div className="rating__pic3"></div>
-          </div>
-          }
-
+          {
+            Ratings.map(rating => <Rating key={rating.Value} rate={rating} />)
+          }          
           <ul className="cast">
             <li className="cast__header">cast</li>
             <li className="cast__main">Director</li>
@@ -98,6 +72,7 @@ class FullMovie extends React.Component{
           </ul>
           </div>
         </div>
+      </div>  
       );
     }
 }

@@ -3,7 +3,7 @@ const PropTypes = require('prop-types');
 const { apiKey, page } = require('core/constants.js').omdbapi;
 
 const propTypes = {
-  takeMovie: PropTypes.func.isRequired  
+  findMovie: PropTypes.func.isRequired  
 };
 
 class SearchField extends React.Component{
@@ -14,6 +14,8 @@ class SearchField extends React.Component{
 
         this.onTextChanged = this.onTextChanged.bind(this);
         this.searchSubmit = this.searchSubmit.bind(this);
+        this.getAlotSearchMovies = this.getAlotSearchMovies.bind(this);  
+        this.searchCallback = this.searchCallback.bind(this);      
     }
              
     onTextChanged(e){
@@ -21,23 +23,43 @@ class SearchField extends React.Component{
         this.setState({title: value});        
     }
 
+    getAlotSearchMovies(callback, pageNumber, searchResult=[], searchResultObj = {}){
+      return new Promise((resolve, reject) => fetch(`http://www.omdbapi.com/?s=${this.state.title}&page=${pageNumber}&apiKey=${apiKey}`)
+          .then(response => {
+            if (response.status !== 200)  {
+              let error = new Error(response.statusText);
+              error.response = response;
+              throw error;
+            }
+            response.json().then(data => {
+              searchResultObj = data;
+              if (data.Search) searchResult = searchResult.concat(data.Search);
+
+              searchResultObj.Search = searchResult;
+              callback && callback(searchResultObj);
+              
+              if (pageNumber<10 && (pageNumber*10)<data.totalResults){                
+                this.getAlotSearchMovies(callback, ++pageNumber, searchResult, searchResultObj);
+              } else {
+                resolve(searchResult);
+              }
+            }).catch(reject);
+          }).catch(reject));
+    }
+
+    searchCallback(moviesJson){
+      console.log(moviesJson);      
+      this.props.findMovie(moviesJson);
+    }
+
     searchSubmit(e){
       e.preventDefault();
 
-      fetch(`http://www.omdbapi.com/?s=${this.state.title}&page=${page}&apiKey=${apiKey}`)
-      .then(response => {
-        if(response.ok) return response.json();
-        else {
-          let error = new Error(response.statusText);
-          error.response = response;
-          throw error;
-        }
-      })
-      .then(result => {
-        console.log(result);
-        this.props.takeMovie(result);
-      })
-      .catch(error => console.log(error));
+      this.getAlotSearchMovies(this.searchCallback, page)      
+        .then(result => {         
+        console.log("wrong request");
+        })
+        .catch(console.error);    
     }
              
     render() {

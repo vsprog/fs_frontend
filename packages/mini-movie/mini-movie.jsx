@@ -11,7 +11,8 @@ const propTypes = {
 class MiniMovie extends React.Component{
              
     constructor(props){
-        super(props);          
+        super(props); 
+        this.state = {backSize: "100% 100%"};
     }
 
     uploadHandler(id, e){    	
@@ -30,14 +31,22 @@ class MiniMovie extends React.Component{
       })
       .catch(error => console.log(error));   
     }
+
+    hover(e){       
+      this.setState({backSize: "200% 200%"});              
+    }
+
+    leave(e){    
+      this.setState({backSize: "100% 100%"});      
+    }    
                               
     render() { 
     	let { Title, Year, Poster, imdbID } = this.props.objMovie;  
     	if (Poster==="N/A") Poster = Na;
       return (
       	<div className="mini-movie" onClick={this.uploadHandler.bind(this, imdbID)}>
-      		<img src = {Poster} align='middle' alt='poster' className="mini-movie__poster"/>
-      		<div className="mini-movie__title">{Title}</div>
+      		<div className="mini-movie__poster" onMouseLeave={this.leave.bind(this)} onMouseEnter={this.hover.bind(this)} style={{backgroundImage: `url(${Poster})`, backgroundSize: this.state.backSize}}></div>
+          <div className="mini-movie__title">{Title}</div>
       		<div className="mini-movie__year">{Year}</div>
       	</div>
       );

@@ -6,32 +6,31 @@ class Bookmarks extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = { movies: [] };     
+        this.state = { bookmarks: [] };     
 
         this.deleteBookmark = this.deleteBookmark.bind(this);       
     }
 
     componentDidMount() {
 	    createRequest('fetchBookmarks').then((response) => {
-	      this.setState({ movies: response.data || [] });
+	      this.setState({ bookmarks: response.data || [] });
 	    });   
   	}
 
   	deleteBookmark(imdbID){
   		createRequest('deleteBookmark', { imdbID }).then((response) => {	        
-        this.setState({ movies: response.data || [] });        
+        this.setState({ bookmarks: response.data || [] });        
 	    });    			    
   	}
 
 
     render() {
-    	const { movies } = this.state;
+    	const { bookmarks } = this.state;
 
     	return(
-    		<div className="bookmarks">
-			    <div>Закладки!</div>
+    		<div className="bookmarks">			    
 			    {
-			    	movies.map(movie => <MovieBox key = {movie.imdbID} deleteBookmark={this.deleteBookmark} description={movie}/>)
+			    	bookmarks.map(movie => <MovieBox key = {movie.imdbID} deleteBookmark={this.deleteBookmark} description={movie}/>)
 			    }
 			  </div>
     	);

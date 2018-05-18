@@ -22,7 +22,7 @@ class Search extends React.Component{
       });
     }
 
-    takeMovie(responseResult){
+    findMovie(responseResult){
 		   this.setState({ movies: responseResult });
     }
  
@@ -56,15 +56,15 @@ class Search extends React.Component{
 
     render() {
       return (
-      	<div className="main-page">
-      		<SearchField takeMovie={this.takeMovie.bind(this)} />
+      	<div className="search-page">
+      		<SearchField findMovie={this.findMovie.bind(this)} />
    				{
    					this.state.movies.Response==='False' && <div className="error-message">{this.state.movies.Error}</div>
    				}
 					{ this.state.movies.Response==='True' &&
-						<div className="main-page__container">
+						<div className="search-page__container">
 						{this.state.movies.Search.map(movie => (
-							<Link key={movie.imdbID} to={`/search/${movie.imdbID}`} className="main-page__link">
+							<Link key={movie.imdbID} to={`/search/${movie.imdbID}`} className="search-page__link">
 								<MiniMovie key={movie.imdbID} objMovie={movie} showFullMoviePopup={this.showFullMoviePopup.bind(this)} />
 							</Link>
 						))}

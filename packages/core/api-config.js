@@ -19,7 +19,7 @@ module.exports = {
     method: 'POST',
   },
 
-  addMovie: {    
+  addBookmark: {    
      path: '/api/bookmark',
     method: 'POST',
   },
