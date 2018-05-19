@@ -16,16 +16,20 @@ class FullMovie extends React.Component{
 
     constructor(props){
         super(props);
-        this.state={top: "-100%", markImg: star };
+        this.state={class: "fixed-container hide", markImg: star };
 
         this.toggleView = this.toggleView.bind(this);
     }
 
+    componentDidMount(){
+//      this.setState({class: "fixed-container show"});
+    }
+
     toggleView(e){
-      if (this.state.top === "-100%") { //1210px
-        this.setState({ top: 0 }); 
+      if (this.state.class === "fixed-container hide") { 
+        this.setState({ class: "fixed-container show" }); 
       } else{
-        this.setState({ top: "-100%" });
+        this.setState({ class: "fixed-container hide" });
       }
     }
 
@@ -43,11 +47,11 @@ class FullMovie extends React.Component{
 
       //иначе будет пытаться загрузить изображения из localhost/search/s
       let path = location.href;
-      path = path.slice(0, path.indexOf('search'));
+      path = path.slice(0, path.search(/search|bookmark/g));
 
       if (Poster==="N/A") Poster = path + Na;
       return (
-      <div className="fixed-container" style={{top: this.state.top}}>  
+      <div className={this.state.class}>
         <div className="full-movie">
           <div className="full-movie__container">
             <div className="full-movie__title">{Title}</div>

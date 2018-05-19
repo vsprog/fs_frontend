@@ -15,7 +15,7 @@ class MiniMovie extends React.Component{
         this.state = {backSize: "100% 100%"};
     }
 
-    uploadHandler(id, e){    	
+    uploadHandler(id, e){    	//createRequest("POST/omdb")
     	fetch(`http://www.omdbapi.com/?i=${id}&plot=${plot}&apiKey=${apiKey}`)
       .then(response => {
         if(response.ok) return response.json();

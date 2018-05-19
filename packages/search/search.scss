@@ -26,3 +26,27 @@
 	font-size: 25px;
 	font-weight: bold;
 }
+
+.stub{
+	background: #FFEEB4;
+	
+	border: 5px dashed #DCBF5B;
+	border-radius: 40px;
+	
+	display: inline-block;
+
+	margin: 20px;
+
+	color: #DCBF5B;
+	font-size: 45px;	
+
+	&__news{
+		width: 70%;
+		height: 700px;
+	}
+
+	&__adv{
+		width: 20%;
+		height: 700px;
+	}
+}

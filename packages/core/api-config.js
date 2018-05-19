@@ -20,7 +20,7 @@ module.exports = {
   },
 
   addBookmark: {    
-     path: '/api/bookmark',
+    path: '/api/bookmark',
     method: 'POST',
   },
 /*

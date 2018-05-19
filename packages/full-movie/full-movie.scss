@@ -4,10 +4,15 @@
 	position: absolute;
 		
 	left: 0;
-	transition: top .5s ease;	
+	transition: top .5s ease;		
+}
 
-	overflow-x: hidden;
-	
+.show{
+	top: 0;
+}
+
+.hide{
+	top: -100%;
 }
 
 .full-movie{

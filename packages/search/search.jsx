@@ -9,7 +9,7 @@ class Search extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {movies: "", fullMovie: "", bookmarks:[] };
+        this.state = {movies: "", fullMovie: {}, bookmarks:[] };
 
         this.toggleMark = this.toggleMark.bind(this);
 
@@ -58,6 +58,12 @@ class Search extends React.Component{
       return (
       	<div className="search-page">
       		<SearchField findMovie={this.findMovie.bind(this)} />
+          { !this.state.movies && 
+            <div>
+              <div className="stub stub__news">Новости</div>
+              <div className="stub stub__adv">Реклама</div>
+            </div>
+          }
    				{
    					this.state.movies.Response==='False' && <div className="error-message">{this.state.movies.Error}</div>
    				}
@@ -71,7 +77,7 @@ class Search extends React.Component{
 						</div>
 					}
 					{
-						(this.state.fullMovie.Title) ?          
+						( this.state.fullMovie.Title) ?          
               <Route path="/search/:id" render={(props) => (
                 <FullMovie {...props} toggleMark = {this.toggleMark} description={this.state.fullMovie} ref={(c)=>{this.moviePopup=c }}/>
               )} /> : null
