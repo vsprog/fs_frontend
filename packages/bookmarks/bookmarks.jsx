@@ -44,12 +44,12 @@ class Bookmarks extends React.Component{
 
       if (bookmark){      
         this.moviePopup.offStar();
-        createRequest('deleteMovie', { imdbID }).then((response) => {
+        createRequest('deleteBookmark', { imdbID }).then((response) => {
           this.setState({bookmarks: response.data || []});
         });
       } else {        
         this.moviePopup.onStar();
-        createRequest('addMovie', {}, { movie }).then((response) => {
+        createRequest('addBookmark', {}, { movie }).then((response) => {
           this.setState({bookmarks: response.data || []});
         });
       }

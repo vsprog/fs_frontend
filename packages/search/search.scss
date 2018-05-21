@@ -17,7 +17,7 @@
 	&__link{
 		text-decoration: none;
 		color: #000;
-	}
+	}	
 }
 
 .error-message{
@@ -50,3 +50,26 @@
 		height: 700px;
 	}
 }
+
+.next{
+	position: absolute;
+  bottom: 200px;
+	left: -200px;
+
+	opacity: 0;
+
+	transition: opacity .8s ease;
+
+	&__button{
+		width: 100px;
+		height: 100px;
+
+		position: fixed;
+
+		cursor: pointer;
+	
+		background: url('./next.png') no-repeat;
+		background-size: 100% 100%;
+	}
+}
+

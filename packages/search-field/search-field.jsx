@@ -3,14 +3,14 @@ const PropTypes = require('prop-types');
 const { apiKey, page } = require('core/constants.js').omdbapi;
 
 const propTypes = {
-  findMovie: PropTypes.func.isRequired  
+  findMovie: PropTypes.func.isRequired
 };
 
 class SearchField extends React.Component{
              
     constructor(props){
         super(props);
-        this.state = {title: ""};
+        this.state = {title: "", pageNumber: page};
 
         this.onTextChanged = this.onTextChanged.bind(this);
         this.searchSubmit = this.searchSubmit.bind(this);
@@ -20,7 +20,7 @@ class SearchField extends React.Component{
              
     onTextChanged(e){
         let value = e.target.value.trim();
-        this.setState({title: value});        
+        this.setState({title: value, pageNumber: page});
     }
 
     getAlotSearchMovies(callback, pageNumber, searchResult=[], searchResultObj = {}){
@@ -37,11 +37,11 @@ class SearchField extends React.Component{
 
               searchResultObj.Search = searchResult;
               callback && callback(searchResultObj);
-              
-              if (pageNumber<10 && (pageNumber*10)<data.totalResults){                
-                this.getAlotSearchMovies(callback, ++pageNumber, searchResult, searchResultObj);
+
+              if ((pageNumber-1)%5<4 && (pageNumber*10)<data.totalResults){ 
+                this.getAlotSearchMovies(callback, ++pageNumber, searchResult, searchResultObj);                
               } else {
-                resolve(searchResult);
+                resolve(searchResultObj);
               }
             }).catch(reject);
           }).catch(reject));
@@ -52,14 +52,20 @@ class SearchField extends React.Component{
       this.props.findMovie(moviesJson);
     }
 
+    callGetAlotMovies(){      
+      this.getAlotSearchMovies(this.searchCallback, this.state.pageNumber)
+        .then(result => {         
+        console.log("wrong request");        
+        })
+        .catch(console.error); 
+
+      this.setState({pageNumber: this.state.pageNumber+5});
+    }
+
     searchSubmit(e){
       e.preventDefault();
 
-      this.getAlotSearchMovies(this.searchCallback, page)      
-        .then(result => {         
-        console.log("wrong request");
-        })
-        .catch(console.error);    
+      this.callGetAlotMovies(this.state.pageNumber);         
     }
              
     render() {

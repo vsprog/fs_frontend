@@ -9,9 +9,10 @@ class Search extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {movies: "", fullMovie: {}, bookmarks:[] };
+        this.state = {movies: "", fullMovie: {}, bookmarks:[], opacity: "0"};
 
         this.toggleMark = this.toggleMark.bind(this);
+        this.callSearchMovies = this.callSearchMovies.bind(this);
 
         this.moviePopup = null;//React.createRef();
     }
@@ -54,34 +55,47 @@ class Search extends React.Component{
         
     }
 
+    callSearchMovies(){
+      this.searchField.callGetAlotMovies();      
+    }
+
+    showNextButton(){
+      this.setState({opacity: "1"});
+    }
+
     render() {
       return (
-      	<div className="search-page">
-      		<SearchField findMovie={this.findMovie.bind(this)} />
+      	<div className="search-page" >
+      		<SearchField findMovie={this.findMovie.bind(this)} ref={ (c) =>{this.searchField = c}}/>
           { !this.state.movies && 
             <div>
               <div className="stub stub__news">Новости</div>
               <div className="stub stub__adv">Реклама</div>
             </div>
-          }
-   				{
-   					this.state.movies.Response==='False' && <div className="error-message">{this.state.movies.Error}</div>
-   				}
+          }   				
 					{ this.state.movies.Response==='True' &&
 						<div className="search-page__container">
 						{this.state.movies.Search.map(movie => (
-							<Link key={movie.imdbID} to={`/search/${movie.imdbID}`} className="search-page__link">
-								<MiniMovie key={movie.imdbID} objMovie={movie} showFullMoviePopup={this.showFullMoviePopup.bind(this)} />
+							<Link key={String(Math.random().toString(16).split('.')[1])} to={`/search/${movie.imdbID}`} className="search-page__link">
+								<MiniMovie objMovie={movie} showFullMoviePopup={this.showFullMoviePopup.bind(this)} />
 							</Link>
 						))}
 						</div>
 					}
+          {
+            this.state.movies.Response==='False' && <div className="error-message">{this.state.movies.Error}</div>
+          }
 					{
 						( this.state.fullMovie.Title) ?          
               <Route path="/search/:id" render={(props) => (
                 <FullMovie {...props} toggleMark = {this.toggleMark} description={this.state.fullMovie} ref={(c)=>{this.moviePopup=c }}/>
               )} /> : null
 					}
+          
+          <div className="next" style={{opacity: this.state.opacity}} onClick={this.callSearchMovies}>
+            <div className="next__button"></div>
+          </div>
+          
       	</div>
       );
     }
