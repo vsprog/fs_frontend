@@ -21,10 +21,6 @@ class FullMovie extends React.Component{
         this.toggleView = this.toggleView.bind(this);
     }
 
-    componentDidMount(){
-//      this.setState({class: "fixed-container show"});
-    }
-
     toggleView(e){
       if (this.state.class === "fixed-container hide") { 
         this.setState({ class: "fixed-container show" }); 
@@ -62,7 +58,7 @@ class FullMovie extends React.Component{
           <img onClick={toggleMark.bind(null, this.props.description)} className="full-movie__bookmark button" src={path + this.state.markImg} align='middle' alt='mark' />
           <img src = {Poster} align='middle' alt='poster' className="full-movie__poster" />
           <div className="full-movie__plot">{Plot}</div>
-          {
+          { Ratings &&
             Ratings.map(rating => <Rating key={rating.Value} rate={rating} />)
           }          
           <ul className="cast">
@@ -70,9 +66,11 @@ class FullMovie extends React.Component{
             <li className="cast__main">Director</li>
             <li className="cast__surname">{Director}</li>
             <li className="cast__main">Actors</li>
-            {Actors.split(',').map(actor =>
-              <li key={actor} className="cast__surname">{actor}</li>
-            )}
+            { Actors &&
+              Actors.split(',').map(actor =>
+                <li key={actor} className="cast__surname">{actor}</li>
+              )
+            }
           </ul>
           </div>
         </div>

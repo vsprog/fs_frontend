@@ -60,7 +60,7 @@ class Bookmarks extends React.Component{
     }
 
     render() {
-    	const { bookmarks, isLoading } = this.state;
+    	const { bookmarks, isLoading, fullMovie } = this.state;
 
     	return(
     		<div className="bookmarks">		
@@ -70,11 +70,7 @@ class Bookmarks extends React.Component{
 			    {
 			    	bookmarks.map(movie => <MovieBox key = {movie.imdbID} deleteBookmark={this.deleteBookmark} showMovie={this.showMovie} description={movie}/>)
 			    }
-          {
-            ( this.state.fullMovie.Title) ?          
-              <FullMovie toggleMark = {this.toggleMark} description={this.state.fullMovie} ref={(c)=>{this.moviePopup=c }}/>
-              : null
-          }
+          <FullMovie toggleMark = {this.toggleMark} description={fullMovie} ref={(c)=>{this.moviePopup=c }}/>
 			  </div>
     	);
     }

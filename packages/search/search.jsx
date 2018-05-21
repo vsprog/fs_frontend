@@ -107,12 +107,9 @@ class Search extends React.Component{
           {
             movies.Response==='False' && <div className="error-message">{movies.Error}</div>
           }
-					{
-						( fullMovie.Title) ?          
-              <Route path="/search/:id" render={(props) => (
-                <FullMovie {...props} toggleMark = {this.toggleMark} description={fullMovie} ref={(c)=>{this.moviePopup=c }}/>
-              )} /> : null
-					}
+					<Route path="/search/:id" render={(props) => (
+            <FullMovie {...props} toggleMark = {this.toggleMark} description={fullMovie} ref={(c)=>{this.moviePopup=c }}/>
+          )} />
           
           <div className="next" style={{opacity: opacity}} onClick={this.callSearchMovies}>
             <div className="next__button"></div>

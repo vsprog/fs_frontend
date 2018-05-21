@@ -10,13 +10,13 @@
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 	background-repeat: no-repeat;
-	background-position: 50% 25% center;		
-	background-size: 16% 100%;	
+	background-position: left;
+	background-size: 13% 100%;
 
 	display: inline-block;
 
 	font: normal 16px "Century Gothic";
-	text-align: left;
+	text-align: right;
 
 	&__close{		
 		top: 10px;		
@@ -40,10 +40,10 @@
 		background-repeat: no-repeat;
 	}
 
-	&__title{
-		width: 600px;
+	&__title{	
 		margin: 10px 0;
-		margin-left: 170px;
+		margin-right: 100px;
+		margin-left: 200px;
 		
 		font-size: 30px;
 		line-height: 35px;
@@ -51,7 +51,7 @@
 	}
 
 	&__info{
-		margin-left: 170px;
+		margin-right: 100px;
 		
 		font-size: 20px;
 		color: #fff;
