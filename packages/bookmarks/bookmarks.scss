@@ -1,7 +1,15 @@
 @import 'packages/movie-box/movie-box.scss';
 @import 'packages/full-movie/full-movie.scss';
+@import 'packages/preloader/preloader';
 
 .bookmarks{
 	position: relative;
 	height: 100%;
+}
+
+.loading {
+  @extend %block-preloader;
+
+  width: 100%;
+  height: 100%;  
 }

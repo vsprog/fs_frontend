@@ -1,6 +1,7 @@
 @import 'packages/search-field/search-field.scss';
 @import 'packages/mini-movie/mini-movie.scss';
 @import 'packages/full-movie/full-movie.scss';
+@import 'packages/preloader/preloader';
 
 .search-page{
 	position: relative;
@@ -18,6 +19,13 @@
 		text-decoration: none;
 		color: #000;
 	}	
+}
+
+.loading {
+  @extend %block-preloader;
+
+  width: 100%;
+  height: 100%;  
 }
 
 .error-message{

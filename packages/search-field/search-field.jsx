@@ -3,7 +3,8 @@ const PropTypes = require('prop-types');
 const { apiKey, page } = require('core/constants.js').omdbapi;
 
 const propTypes = {
-  findMovie: PropTypes.func.isRequired
+  findMovie: PropTypes.func.isRequired,
+  loadingProcess: PropTypes.func.isRequired,
 };
 
 class SearchField extends React.Component{
@@ -52,7 +53,9 @@ class SearchField extends React.Component{
       this.props.findMovie(moviesJson);
     }
 
-    callGetAlotMovies(){      
+    callGetAlotMovies(){  
+      this.props.loadingProcess();    
+      
       this.getAlotSearchMovies(this.searchCallback, this.state.pageNumber)
         .then(result => {         
         console.log("wrong request");        

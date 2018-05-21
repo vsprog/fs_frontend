@@ -7,7 +7,11 @@ class Bookmarks extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = { bookmarks: [], fullMovie: {} };     
+        this.state = { 
+          bookmarks: [], 
+          fullMovie: {}, 
+          isLoading: true, 
+        };     
 
         this.deleteBookmark = this.deleteBookmark.bind(this);       
         this.showMovie = this.showMovie.bind(this); 
@@ -16,7 +20,7 @@ class Bookmarks extends React.Component{
 
     componentDidMount() {
 	    createRequest('fetchBookmarks').then((response) => {
-	      this.setState({ bookmarks: response.data || [] });
+	      this.setState({ bookmarks: response.data || [], isLoading: false });
 	    });   
   	}
 
@@ -56,10 +60,13 @@ class Bookmarks extends React.Component{
     }
 
     render() {
-    	const { bookmarks } = this.state;
+    	const { bookmarks, isLoading } = this.state;
 
     	return(
-    		<div className="bookmarks">			    
+    		<div className="bookmarks">		
+          {
+            isLoading && <div className="loading"></div> 
+          }	    
 			    {
 			    	bookmarks.map(movie => <MovieBox key = {movie.imdbID} deleteBookmark={this.deleteBookmark} showMovie={this.showMovie} description={movie}/>)
 			    }
