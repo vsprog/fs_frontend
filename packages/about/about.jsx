@@ -6,10 +6,10 @@ import react from './react.png';
 
 const About = () => (
 	<div>
-	  <img src={powered} align='middle' alt='mark' />
-	  <img src={node} align='middle' alt='mark' />
-	  <img src={express} align='middle' alt='mark' />
-	  <img src={react} align='middle' alt='mark' />
+	  <img className="tech" src={powered} align='middle' alt='mark' />
+	  <img className="tech" src={node} align='middle' alt='mark' />
+	  <img className="tech" src={express} align='middle' alt='mark' />
+	  <img className="tech" src={react} align='middle' alt='mark' />
 	</div>
 );
 

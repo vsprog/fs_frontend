@@ -47,7 +47,7 @@ class MiniMovie extends React.Component{
       let path = location.href;
       path = path.slice(0, path.search(/search|bookmark/g));
 
-    	if (Poster==="N/A") Poster = Na;
+    	if (Poster==="N/A") Poster = path + Na;
       return (
       	<div className="mini-movie" onClick={this.uploadHandler.bind(this, imdbID)}>
       		<div className="mini-movie__poster" onMouseLeave={this.leave.bind(this)} onMouseEnter={this.hover.bind(this)} style={{backgroundImage: `url(${Poster})`, backgroundSize: this.state.backSize}}></div>
