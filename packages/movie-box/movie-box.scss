@@ -4,19 +4,48 @@
 	margin: 20px;	
 	
 	position: relative;
-
-	background: #333;
-	border-radius: 40px;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-	background-repeat: no-repeat;
-	background-position: left;
-	background-size: 13% 100%;
-
 	display: inline-block;
 
 	font: normal 16px "Century Gothic";
-	text-align: right;
+
+/*	transition: transform 1s ease-in-out; */
+
+	&__front{
+		backface-visibility: hidden;
+		position: absolute;
+
+		width: 900px;
+    height: 180px;
+
+		background: #333;
+		border-radius: 40px;
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+		background-repeat: no-repeat;
+		background-position: left;
+		background-size: 13% 100%;
+	
+		text-align: right;
+		z-index: 2;
+	}
+
+	&__back{
+		transform: rotateX(180deg);
+		
+		border-radius: 40px;
+		
+		height: 180px;
+		padding: 0 20px;
+
+		background: #c3bbbb;
+
+		overflow: hidden;
+	}
+
+	&__plot{
+		color: #0087cc;    
+    font-size: 30px;
+	}
 
 	&__close{		
 		top: 10px;		
@@ -58,14 +87,13 @@
 	}
 }
 
-.down{
-	top: 10px;
-	box-shadow: none;
+.twirl{ 
+   transform-style: preserve-3d;  
+   transition: transform 1s ease-in-out;  
 }
 
-.up{
-	top: 0;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+.twirl:hover {
+  transform: rotateX(180deg);
 }
 
 .btn{

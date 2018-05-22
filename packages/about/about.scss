@@ -1,0 +1,10 @@
+img {
+	display: block;
+
+	margin: 100px auto;
+
+	&:first-child {
+		margin: 0 auto;
+	}
+}
+

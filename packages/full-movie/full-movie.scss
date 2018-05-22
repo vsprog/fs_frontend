@@ -4,7 +4,9 @@
 	position: absolute;
 		
 	left: 0;
-	transition: top .5s ease;		
+	transition: top .5s ease;
+
+	z-index: 5;		
 }
 
 .show{

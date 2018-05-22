@@ -42,6 +42,11 @@ class MiniMovie extends React.Component{
                               
     render() { 
     	let { Title, Year, Poster, imdbID } = this.props.objMovie;  
+
+      //иначе будут ошибки в результатах поиска
+      let path = location.href;
+      path = path.slice(0, path.search(/search|bookmark/g));
+
     	if (Poster==="N/A") Poster = Na;
       return (
       	<div className="mini-movie" onClick={this.uploadHandler.bind(this, imdbID)}>
