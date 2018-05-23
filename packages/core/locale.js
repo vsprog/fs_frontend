@@ -4,19 +4,12 @@ module.exports = {
     CAN_NOT_FIND_MOVIE: 'Фильм не найден, попробуйте обновить страницу',
   },
 
-  captions: {
-    paths: [
-        "/",
-        "/search",
-        "/bookmarks",
-        "/about"
-    ],
-    items: [
-        "Главная",
-        "Поиск",
-        "Закладки",
-        "О сайте"
-      ],
-  },
+  captions: [
+    { label: 'Главная', path: '/' },
+    { label: 'Поиск', path: '/search' },
+    { label: 'Закладки', path: '/bookmarks' },
+    { label: 'О сайте', path: '/about' },
+  ],
+
 
 };

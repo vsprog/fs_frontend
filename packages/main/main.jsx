@@ -9,7 +9,7 @@ const Main = () => (
       <Menu />
       <Content />
     </div>
-  </Router>  
+  </Router>
 );
 
 module.exports = Main;

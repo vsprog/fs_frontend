@@ -1,12 +1,12 @@
 @import 'packages/menu-item/menu-item.scss';
 
 .menu-list{
+	float: left;
+
 	width: 300px;
 	height: 100%;
 	padding: 20px 0;
 
 	background: #222;
 
-	float: left;
-  
 }

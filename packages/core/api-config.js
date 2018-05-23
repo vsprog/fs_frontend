@@ -9,21 +9,21 @@ module.exports = {
     method: 'GET',
   },
 
-  fetchBookmark: { 
+  fetchBookmark: {
     path: '/api/bookmarks/:imdbID',
     method: 'GET',
   },
 
   addMovie: {
-    path: '/api/search',    
+    path: '/api/search',
     method: 'POST',
   },
 
-  addBookmark: {    
+  addBookmark: {
     path: '/api/bookmark',
     method: 'POST',
   },
-/*
+  /*
   updateMovie: {
     path: '/api/search/:id',
     method: 'PATCH',

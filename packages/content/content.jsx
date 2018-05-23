@@ -7,36 +7,36 @@ const MainPage = require('main-page/main-page.jsx');
 const Search = require('search/search.jsx');
 
 
-class Content extends React.Component{
-
-	constructor(props){
-		super(props);  
-		this.state={isEndOfPage: false};		
+class Content extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.handleScroll = this.handleScroll.bind(this);
-	}
+  }
 
-	handleScroll(e){		
-		let end = e.target.scrollHeight - 100 <= e.target.offsetHeight + e.target.scrollTop;
-		
-		if (end && this.search) {
-			this.search.showNextButton();			
-		} 				
-	}
+  handleScroll(e) {
+    const end = e.target.scrollHeight - 100 <= e.target.offsetHeight + e.target.scrollTop;
 
-	render(){
+    if (end && this.search) {
+      this.search.showNextButton();
+    }
+  }
 
-		return (		 
-		  <div className = 'content' onScroll={this.handleScroll}>		 	
-	      <Route path="/" exact component={MainPage} />
-	      <Route path="/search" render={(props) => (
-				  <Search {...props} ref={ (c) =>{this.search = c}}/>
-				)} />
-	      <Route path="/bookmarks" component={Bookmarks} />
-	      <Route path="/about" component={About} />
-	    </div>
-		);
-	}
+  render() {
+    return (
+      <div className="content" onScroll={this.handleScroll}>
+        <Route path="/" exact component={MainPage} />
+        <Route
+          path="/search"
+          render={(props) => (
+            <Search {...props} ref={(c) =>{ this.search = c; }} />
+          )}
+        />
+        <Route path="/bookmarks" component={Bookmarks} />
+        <Route path="/about" component={About} />
+      </div>
+    );
+  }
 }
 
 module.exports = Content;

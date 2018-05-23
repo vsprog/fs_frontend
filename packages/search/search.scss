@@ -9,7 +9,7 @@
 	height: 100%;
 
 	&__container{
-		display: flex;	
+		display: flex;
 		align-items: stretch;	flex-wrap: wrap;
 		justify-content: space-around;
 
@@ -17,15 +17,16 @@
 
 	&__link{
 		text-decoration: none;
+
 		color: #000;
-	}	
+	}
 }
 
 .loading {
-  @extend %block-preloader;
-
   width: 100%;
-  height: 100%;  
+  height: 100%;
+
+  @extend %block-preloader;
 }
 
 .error-message{
@@ -36,17 +37,16 @@
 }
 
 .stub{
-	background: #FFEEB4;
-	
-	border: 5px dashed #DCBF5B;
-	border-radius: 40px;
-	
 	display: inline-block;
 
 	margin: 20px;
 
 	color: #DCBF5B;
-	font-size: 45px;	
+	border: 5px dashed #DCBF5B;
+	border-radius: 40px;
+	background: #FFEEB4;
+
+	font-size: 45px;
 
 	&__news{
 		width: 70%;
@@ -62,22 +62,21 @@
 .next{
 	position: absolute;
   bottom: 200px;
-	left: -200px;
-
-	opacity: 0;
+	left: -180px;
 
 	transition: opacity .8s ease;
 
-	&__button{
-		width: 100px;
-		height: 100px;
+	opacity: 0;
 
+	&__button{
 		position: fixed;
 
+		width: 70px;
+		height: 70px;
+
 		cursor: pointer;
-	
+
 		background: url('./next.png') no-repeat;
 		background-size: 100% 100%;
 	}
 }
-

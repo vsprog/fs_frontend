@@ -1,129 +1,106 @@
 .movie-box{
-	width: 900px;
-	height: 180px;
-	margin: 20px;	
-	
 	position: relative;
+
 	display: inline-block;
+
+	width: 800px;
+	height: 250px;
+	margin: 10px;
+
+  cursor: move;
 
 	font: normal 16px "Century Gothic";
 
-/*	transition: transform 1s ease-in-out; */
-
 	&__front{
-		overflow: hidden;
-		backface-visibility: hidden;
 		position: absolute;
+		z-index: 2;
 
-		width: 900px;
-    height: 180px;
+		overflow: hidden;
+
+		width: 100%;
+    height: 100%;
+
+		text-align: right;
 
 		background: #333;
-		border-radius: 40px;
+		background-repeat: no-repeat;
+		background-position: left;
+		background-size: 20% 100%;
 		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: 100% 500%;		
-	
-		text-align: right;
-		z-index: 2;
-	}
-
-	&__front:before {
-		content: "";
-
-    background: inherit;
-    filter: blur(10px);
-
-    width: 900px;
-    height: 180px;
-    
-    position: absolute;
-    top: 0;
-    left: 0;
+		backface-visibility: hidden;
 	}
 
 	&__back{
-		transform: rotateX(180deg);
-		
-		border-radius: 40px;
-		
-		height: 180px;
+		overflow: hidden;
+
+		height: 100%;
 		padding: 0 20px;
 
-		background: #c3bbbb;
+		transform: rotateX(180deg);
 
-		overflow: hidden;
+		background: #c3bbbb;
 	}
 
 	&__plot{
-		color: #0087cc;    
+		color: #0087cc;
+
     font-size: 30px;
 	}
 
-	&__ind{
-		font-size: 40px;
-		font-weight: bold;
-		color: #D1503B;
-
-		cursor: move;
-		
-		position: absolute;
+	&__close{
 		top: 10px;
-		left: 20px;
-	}
 
-	&__close{		
-		top: 10px;		
+		cursor: pointer;
 
 		color: #fff;
-		font-size: 30px;
-
-		background: rgba(0,0,0,0);
-
 		border: 2px solid #fff;
 		border-radius: 50%;
-		
-		outline:none;	
-		cursor: pointer;	
+		outline:none;
+		background: rgba(0,0,0,0);
+
+		font-size: 30px;
 	}
 
 	&__watch{
 		top: 80px;
+
 		background-image: url(./watch.png);
-		background-size: contain;
 		background-repeat: no-repeat;
+		background-size: contain;
 	}
 
-	&__title{	
+	&__title{
+		position: absolute;
+    right: 0;
+
 		margin: 10px 0;
 		margin-right: 100px;
 		margin-left: 200px;
 
-		position: absolute;
-    right: 0;
-		
+		color: #fff;
+
 		font-size: 30px;
 		line-height: 35px;
-		color: #fff;
 	}
 
 	&__info{
-		margin-right: 100px;
-
 		position: absolute;
     right: 0;
-    top: 80px;
-		
-		font-size: 20px;
+    bottom: 50px;
+
+		margin-right: 20px;
+
 		color: #fff;
+
+		font-size: 20px;
 	}
 }
 
-.twirl{ 
-   transform-style: preserve-3d;  
-   transition: transform 1s ease-in-out;  
+.twirl{
+   transition: transform 1s ease-in-out;
+
+   transform-style: preserve-3d;
 }
 
 .twirl:hover {

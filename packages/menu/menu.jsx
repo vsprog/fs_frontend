@@ -1,21 +1,13 @@
 const React = require('react');
 const MenuItem = require('menu-item/menu-item.jsx');
-const heads = require('core/locale').captions;
+const { captions } = require('core/locale');
 
-class Menu extends React.Component{
-	constructor(props){
-		super(props);		
-	}
-
-  render(){
-    return (
-        <div className="menu-list">
-          {heads.items.map((head,idx) => (
-          	(<MenuItem key={head} item={head} path={heads.paths[idx]}/>)
-          ))}
-        </div>
-    );
-  }
-}
+const Menu = () =>(
+  <div className="menu-list">
+    {captions.map((cap) => (
+      (<MenuItem key={cap.label} item={cap.label} path={cap.path} />)
+    ))}
+  </div>
+);
 
 module.exports = Menu;

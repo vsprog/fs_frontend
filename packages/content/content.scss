@@ -3,28 +3,29 @@
 @import 'packages/bookmarks/bookmarks.scss';
 @import 'packages/about/about.scss';
 
+
 .content{
-	overflow-x: hidden;
-	overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
-	height: 100%;
-	margin-left: 300px;
+  height: 100%;
+  margin-left: 300px;
 
-	text-align: center;
+  text-align: center;
 
-	background: #EFEFEF;
+  background: #EFEFEF;
 
-	&::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-	}
-	 
-	&::-webkit-scrollbar-track {
-	    background-color: rgba(0,0,0,.1);
-	}
-	 
-	&::-webkit-scrollbar-thumb {
-		border-radius: 10px;
-	  background-color: #D1503B;	  
-	}	
+  }
+   
+  &::-webkit-scrollbar-track {
+      background-color: rgba(0,0,0,.1);
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #D1503B;    
+  } 
 }

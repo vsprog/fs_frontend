@@ -7,18 +7,19 @@
 		float: left;
 
 		margin: 10px;
-	
+
 		font-size: 26px;
 		font-weight: bold;
 		line-height: 48px;
 	}
 
 	&__pic-imdb{
+		display: inline-block;
+
 		width: 75px;
 		height: 65px;
 
 		text-align: center;
-		display: inline-block;
 
 		color: black;
 		background: url('./star.png') no-repeat;
@@ -53,6 +54,7 @@
 
 	&__tomatometer{
 		display: inline-block;
+
 		margin: 10px 50px;
 	}
 
@@ -78,6 +80,7 @@
 
 	&__sign{
 		color: #2D2825;
+
 		font-size: 15px;
 	}
 }

@@ -2,18 +2,17 @@ const React = require('react');
 const {findDOMNode}  = require('react-dom');
 const PropTypes = require('prop-types');
 const { DragSource, DropTarget } = require('react-dnd');
-const itemTypes = require('./itemTypes');
-import Na from 'mini-movie/No_Image_Available.png';
+const Na = require('mini-movie/No_Image_Available.png');
 
-const propTypes = {  
+const propTypes = {
   description: PropTypes.object.isRequired,
-  deleteBookmark: PropTypes.func.isRequired,  
+  deleteBookmark: PropTypes.func.isRequired,
   showMovie: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  moveBookmark: PropTypes.func.isRequired,
 //    connectDragSource: PropTypes.func.isRequired,
 //    connectDropTarget: PropTypes.func.isRequired,
-    index: PropTypes.number.isRequired,
-//    isDragging: PropTypes.bool.isRequired,    
-    moveBookmark: PropTypes.func.isRequired,
+//    isDragging: PropTypes.bool.isRequired,
 };
 
 const bmSource = {
@@ -34,22 +33,22 @@ const bmTarget = {
       return;
     }
 
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();    
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;    
-    const clientOffset = monitor.getClientOffset();    
+    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+    const clientOffset = monitor.getClientOffset();
     const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
     if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
       return;
     }
-    
+
     if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
       return;
     }
 
     props.moveBookmark(dragIndex, hoverIndex);
     monitor.getItem().index = hoverIndex;
-  },  
+  },
 };
 
 @DropTarget("movie-box", bmTarget, connect => ({
@@ -62,16 +61,12 @@ const bmTarget = {
 class MovieBox extends React.Component{
 
     constructor(props){
-      super(props); 
-      this.state = {class: "movie-box"};
+      super(props);
+      this.state = {twirl: false};
     }
 
     toggleClass(e){
-      if (this.state.class === "movie-box"){
-        this.setState({class: "movie-box twirl"});
-      } else {
-        this.setState({class: "movie-box"});
-      }
+      this.setState({twirl: !this.state.twirl});
     }
 
     render() {
@@ -82,13 +77,12 @@ class MovieBox extends React.Component{
 
     	return connectDragSource(
         connectDropTarget(
-          <div className={this.state.class} style={{opacity: +!isDragging}}>
+          <div className={ this.state.twirl ? "movie-box twirl" : "movie-box" } style={{opacity: +!isDragging}}>
             <div className="movie-box__front" style={{backgroundImage: `url(${Poster})`}}>
-              <div className="movie-box__ind">#{index+1}</div>
               <div className="movie-box__title" onMouseLeave={this.toggleClass.bind(this)} onMouseEnter={this.toggleClass.bind(this)}>{Title} ({Year})</div>
               <div className="movie-box__info">{Genre} | {Runtime}</div>
               <button className="movie-box__close btn" onClick={deleteBookmark.bind(null, imdbID)}>X</button>
-              <div className="movie-box__watch btn" onClick={showMovie.bind(null, imdbID)}></div> 
+              <div className="movie-box__watch btn" onClick={showMovie.bind(null, imdbID)}></div>
             </div>
             <div className="movie-box__back">
               <div className="movie-box__plot">{Plot}</div>
@@ -97,7 +91,7 @@ class MovieBox extends React.Component{
         ),
       );
     }
- }  
+ }
 
 MovieBox.propTypes = propTypes;
 

@@ -1,6 +1,10 @@
 .menu-list__item {
+    display: block;
+
     margin: 0 20px;
     padding: 15px;
+
+    text-decoration: none;
 
     color: #656565;
     border-bottom: 1px solid #656565;
@@ -8,17 +12,13 @@
 
     font-size: 16px;
 
-    text-decoration: none;
-
-    display: block;
-
     &:hover {
         cursor: pointer;
 
         color: #D1503B;
         border-left: 1px solid #D1503B;
     }
-   
+
     &:active{
       text-decoration: none;
     }
