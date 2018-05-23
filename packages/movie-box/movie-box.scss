@@ -11,6 +11,7 @@
 /*	transition: transform 1s ease-in-out; */
 
 	&__front{
+		overflow: hidden;
 		backface-visibility: hidden;
 		position: absolute;
 
@@ -22,11 +23,25 @@
 		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 		background-repeat: no-repeat;
-		background-position: left;
-		background-size: 13% 100%;
+		background-position: center;
+		background-size: 100% 500%;		
 	
 		text-align: right;
 		z-index: 2;
+	}
+
+	&__front:before {
+		content: "";
+
+    background: inherit;
+    filter: blur(10px);
+
+    width: 900px;
+    height: 180px;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
 	}
 
 	&__back{
@@ -73,6 +88,9 @@
 		margin: 10px 0;
 		margin-right: 100px;
 		margin-left: 200px;
+
+		position: absolute;
+    right: 0;
 		
 		font-size: 30px;
 		line-height: 35px;
@@ -81,6 +99,10 @@
 
 	&__info{
 		margin-right: 100px;
+
+		position: absolute;
+    right: 0;
+    top: 80px;
 		
 		font-size: 20px;
 		color: #fff;

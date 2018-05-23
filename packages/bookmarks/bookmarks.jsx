@@ -2,7 +2,11 @@ const React = require('react');
 const createRequest = require('core/create-request');
 const MovieBox = require('movie-box/movie-box.jsx');
 const FullMovie = require('full-movie/full-movie.jsx');
+const update = require('immutability-helper');
+const { DragDropContext } = require('react-dnd');
+const HTML5Backend = require('react-dnd-html5-backend');
 
+@DragDropContext(HTML5Backend)
 class Bookmarks extends React.Component{
 
     constructor(props){
@@ -16,6 +20,7 @@ class Bookmarks extends React.Component{
         this.deleteBookmark = this.deleteBookmark.bind(this);       
         this.showMovie = this.showMovie.bind(this); 
         this.toggleMark = this.toggleMark.bind(this);
+        this.moveBookmark = this.moveBookmark.bind(this)
     }
 
     componentDidMount() {
@@ -23,6 +28,13 @@ class Bookmarks extends React.Component{
 	      this.setState({ bookmarks: response.data || [], isLoading: false });
 	    });   
   	}
+
+    moveBookmark(dragIndex, hoverIndex) {
+      const { bookmarks } = this.state;
+      const dragBookmark = bookmarks[dragIndex];
+
+      this.setState(update(this.state, {bookmarks: {$splice: [[dragIndex, 1], [hoverIndex, 0, dragBookmark]]}} ) );
+    }
 
   	deleteBookmark(imdbID){
   		createRequest('deleteBookmark', { imdbID }).then((response) => {	        
@@ -68,7 +80,7 @@ class Bookmarks extends React.Component{
             isLoading && <div className="loading"></div> 
           }	    
 			    {
-			    	bookmarks.map(movie => <MovieBox key = {movie.imdbID} deleteBookmark={this.deleteBookmark} showMovie={this.showMovie} description={movie}/>)
+			    	bookmarks.map((movie, ind) => <MovieBox index={ind} key = {movie.imdbID} moveBookmark={this.moveBookmark} deleteBookmark={this.deleteBookmark} showMovie={this.showMovie} description={movie}/>)
 			    }
           <FullMovie toggleMark = {this.toggleMark} description={fullMovie} ref={(c)=>{this.moviePopup=c }}/>
 			  </div>
