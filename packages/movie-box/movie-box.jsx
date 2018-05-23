@@ -75,15 +75,16 @@ class MovieBox extends React.Component{
     }
 
     render() {
-      const { deleteBookmark, showMovie, isDragging, connectDragSource, connectDropTarget } = this.props;
+      const { deleteBookmark, showMovie, index, isDragging, connectDragSource, connectDropTarget } = this.props;
       let { Title, Genre, Runtime, Year, Poster, imdbID, Country, Ratings, Plot } = this.props.description;
 
       if (Poster==="N/A") Poster = Na;
 
     	return connectDragSource(
         connectDropTarget(
-          <div className={this.state.class}>
+          <div className={this.state.class} style={{opacity: +!isDragging}}>
             <div className="movie-box__front" style={{backgroundImage: `url(${Poster})`}}>
+              <div className="movie-box__ind">#{index+1}</div>
               <div className="movie-box__title" onMouseLeave={this.toggleClass.bind(this)} onMouseEnter={this.toggleClass.bind(this)}>{Title} ({Year})</div>
               <div className="movie-box__info">{Genre} | {Runtime}</div>
               <button className="movie-box__close btn" onClick={deleteBookmark.bind(null, imdbID)}>X</button>

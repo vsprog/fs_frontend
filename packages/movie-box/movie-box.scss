@@ -62,6 +62,18 @@
     font-size: 30px;
 	}
 
+	&__ind{
+		font-size: 40px;
+		font-weight: bold;
+		color: #D1503B;
+
+		cursor: move;
+		
+		position: absolute;
+		top: 10px;
+		left: 20px;
+	}
+
 	&__close{		
 		top: 10px;		
 
