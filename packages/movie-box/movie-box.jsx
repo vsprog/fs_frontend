@@ -77,16 +77,12 @@ class MovieBox extends React.Component{
 
     	return connectDragSource(
         connectDropTarget(
-          <div className={ this.state.twirl ? "movie-box twirl" : "movie-box" } style={{opacity: +!isDragging}}>
-            <div className="movie-box__front" style={{backgroundImage: `url(${Poster})`}}>
-              <div className="movie-box__title" onMouseLeave={this.toggleClass.bind(this)} onMouseEnter={this.toggleClass.bind(this)}>{Title} ({Year})</div>
-              <div className="movie-box__info">{Genre} | {Runtime}</div>
-              <button className="movie-box__close btn" onClick={deleteBookmark.bind(null, imdbID)}>X</button>
-              <div className="movie-box__watch btn" onClick={showMovie.bind(null, imdbID)}></div>
-            </div>
-            <div className="movie-box__back">
-              <div className="movie-box__plot">{Plot}</div>
-            </div>
+          <div className="movie-box" style={{opacity: +!isDragging}}>
+            <div className="movie-box__front" style={{backgroundImage: `url(${Poster})`}} />
+            <div className="movie-box__title" onMouseLeave={this.toggleClass.bind(this)} onMouseEnter={this.toggleClass.bind(this)}>{Title} ({Year})</div>
+            <div className="movie-box__info">{Genre} | {Runtime}</div>
+            <button className="movie-box__close btn" onClick={deleteBookmark.bind(null, imdbID)}>X</button>
+            <div className="movie-box__watch btn" onClick={showMovie.bind(null, imdbID)} />            
           </div>
         ),
       );

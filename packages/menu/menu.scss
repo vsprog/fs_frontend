@@ -9,4 +9,12 @@
 
 	background: #222;
 
+	&__logo{
+		width: 55%;
+    height: 200px;    
+    margin-left: 80px;
+
+		background: url('./logo.png') no-repeat; 
+		background-size: 75% 75%;
+	}
 }

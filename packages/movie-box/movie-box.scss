@@ -3,116 +3,78 @@
 
 	display: inline-block;
 
-	width: 800px;
-	height: 250px;
-	margin: 10px;
+	width: 180px;
+	height: 500px;
+	margin: 10px 5px;
 
-  cursor: move;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
 
 	font: normal 16px "Century Gothic";
 
 	&__front{
 		position: absolute;
-		z-index: 2;
-
-		overflow: hidden;
 
 		width: 100%;
-    height: 100%;
-
-		text-align: right;
+    height: 300px;
 
 		background: #333;
 		background-repeat: no-repeat;
-		background-position: left;
-		background-size: 20% 100%;
-		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-		backface-visibility: hidden;
-	}
-
-	&__back{
-		overflow: hidden;
-
-		height: 100%;
-		padding: 0 20px;
-
-		transform: rotateX(180deg);
-
-		background: #c3bbbb;
-	}
-
-	&__plot{
-		color: #0087cc;
-
-    font-size: 30px;
+		background-size: 100% 100%;
 	}
 
 	&__close{
-		top: 10px;
+		right: 10px;
 
-		cursor: pointer;
-
-		color: #fff;
-		border: 2px solid #fff;
+		font-weight: bold;
+		color: #D1503B;
+		border: 2px solid #D1503B;
 		border-radius: 50%;
 		outline:none;
 		background: rgba(0,0,0,0);
 
-		font-size: 30px;
 	}
 
 	&__watch{
-		top: 80px;
+		right: 40px;
 
-		background-image: url(./watch.png);
+		background-image: url(./watch_red.png);
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
 
 	&__title{
 		position: absolute;
-    right: 0;
+    top: 310px;
+    left: 0;
+    margin: 0 auto;
 
-		margin: 10px 0;
-		margin-right: 100px;
-		margin-left: 200px;
+		color: #333;
 
-		color: #fff;
-
-		font-size: 30px;
-		line-height: 35px;
+		font-size: 16px;
+		font-weight: bold;
 	}
 
 	&__info{
 		position: absolute;
-    right: 0;
+    left: 0;
     bottom: 50px;
 
 		margin-right: 20px;
 
-		color: #fff;
+		color: #333;
 
-		font-size: 20px;
+		font-size: 16px;
 	}
-}
-
-.twirl{
-   transition: transform 1s ease-in-out;
-
-   transform-style: preserve-3d;
-}
-
-.twirl:hover {
-  transform: rotateX(180deg);
 }
 
 .btn{
 	position: absolute;
-	right: 15px;
+	bottom: 10px;
 
-	width: 50px;
-	height: 50px;
+	width: 20px;
+	height: 20px;
 
 	cursor: pointer;
 }
