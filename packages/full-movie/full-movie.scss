@@ -4,6 +4,7 @@
 	position: absolute;
 	z-index: 5;
 	left: 0;
+	top: -100%;
 
 	transition: top .5s ease;
 }
@@ -12,18 +13,13 @@
 	top: 0;
 }
 
-.hide{
-	top: -100%;
-}
-
 .full-movie{
 	position: fixed;
 
 	display: flex;
 	align-items: center;
 
-	min-width: 78%;//1070px;
-  max-width: 100%;//1366px;
+	min-width: 78%;  
   
 	height: 100%;
 
@@ -36,7 +32,7 @@
 		clear: both;
 
 		width: 100%;
-		min-height: 600px;
+		min-height: 500px;
 
 		text-align: left;
 
@@ -50,8 +46,24 @@
 		margin: 30px;
 		margin-bottom: 0;
 
-		font-size: 42px;
-		line-height: 50px;
+		font-size: 36px;		
+	}
+
+	&__info{
+		margin: 10px 30px 20px;
+	}
+
+	&__poster{
+		float: left;
+
+		width: 200px;
+		height: 300px;
+		margin: 0 30px;
+		margin-bottom: 30px;
+		padding: 10px;
+
+		border: 2px solid #D2D7D7;
+		border-radius: 3px;
 	}
 
 	&__plot{
@@ -63,8 +75,24 @@
 		line-height: 20px;
 	}
 
+	&__trailer{
+		position: absolute;
+    bottom: 30px;
+    left: 90px;
+    padding: 2px;
+
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;    
+    background: rgba(255,255,255,0);    
+    
+    outline: none;
+    cursor: pointer;
+	}
+
 	&__bookmark{
-		right: 100px;
+		right: 90px;
 	}
 
 	&__close{
@@ -79,38 +107,21 @@
 		font-size: 30px;
 	}
 
-	&__poster{
-		float: left;
-
-		width: 300px;
-		height: 450px;
-		margin: 0 30px;
-		margin-bottom: 30px;
-		padding: 10px;
-
-		border: 2px solid #D2D7D7;
-		border-radius: 3px;
-	}
-
-	&__info{
-		margin: 10px 40px;
-		margin-bottom: 30px;
-	}
 }
 
 .button{
 	position: absolute;
 	top: 30px;
 
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 
 	cursor: pointer;
 }
 
 .cast{
 	position: absolute;
-	top: 100px;
+	top: 80px;
 	right: 80px;
 
 	width: 100px;
