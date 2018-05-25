@@ -10,7 +10,7 @@ const propTypes = {
 class SearchField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', pageNumber: page };
+    this.state = { title: '', pageNumber: page, totalResults: 0 };
 
     this.onTextChanged = this.onTextChanged.bind(this);
     this.searchSubmit = this.searchSubmit.bind(this);
@@ -32,6 +32,7 @@ class SearchField extends React.Component {
           throw error;
         }
         response.json().then((data) => {
+          this.setState({ totalResults: data.totalResults });
           searchResultObj = data;
           if (data.Search) {
             searchResult = searchResult.concat(data.Search);
@@ -55,15 +56,18 @@ class SearchField extends React.Component {
   }
 
   callGetAlotMovies() {
+    let { pageNumber, totalResults } = this.state;
+    if (totalResults && totalResults <= pageNumber*10) return;
+
     this.props.loadingProcess();
 
-    this.getAlotSearchMovies(this.searchCallback, this.state.pageNumber)
+    this.getAlotSearchMovies(this.searchCallback, pageNumber)
       .then((result) => {
         console.log('wrong request');
       })
       .catch(console.error);
 
-    this.setState({ pageNumber: this.state.pageNumber + 5 });
+    this.setState({ pageNumber: pageNumber + 5 });
   }
 
   searchSubmit(e) {
