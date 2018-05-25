@@ -6,10 +6,10 @@ const react = require('./react.png');
 
 const About = () => (
   <div>
-    <img className="tech" src={powered} align="middle" alt="mark" />
-    <img className="tech" src={node} align="middle" alt="mark" />
-    <img className="tech" src={express} align="middle" alt="mark" />
-    <img className="tech" src={react} align="middle" alt="mark" />
+    <img className="tech" src={powered} align="middle" alt="powered" />
+    <img className="tech" src={node} align="middle" alt="node" />
+    <img className="tech" src={express} align="middle" alt="express" />
+    <img className="tech" src={react} align="middle" alt="react" />
   </div>
 );
 

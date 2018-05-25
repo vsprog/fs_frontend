@@ -14,3 +14,7 @@ module.exports.omdbapi = {
   page: 1,
   plot: 'short', // short  full
 };
+
+module.exports.youtube = {
+  apiKey: 'AIzaSyC-eDm4k6TrPbBGqjVikgltGLCU0EJYKB8',
+};

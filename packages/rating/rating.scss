@@ -44,7 +44,7 @@
 		float: left;
 
 		width: 350px;
-		height: 100px;
+		height: 70px;
 		margin-left: 20px;
 		margin-top: -10px;
 		
@@ -63,24 +63,23 @@
 		display: inline-block;
 		float: left;
 
-		width: 80px;
-		height: 80px;
-		padding-top: 10px;
+		width: 65px;
+		height: 65px;
+		padding-top: 5px;
 
 		text-align: center;
 
 		color: #2D2825;
 		background: #FFFE02;
 
-		font-size: 40px;
-		font-weight: bold;
-		line-height: 1em;
+		font-size: 30px;
+		font-weight: 700;		
 	}
 
 	&__sign{
 		color: #2D2825;
 
-		font-size: 15px;
+		font-size: 13px;
 	}
 }
 
