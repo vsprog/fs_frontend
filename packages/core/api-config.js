@@ -23,12 +23,12 @@ module.exports = {
     path: '/api/bookmark',
     method: 'POST',
   },
-  /*
-  updateMovie: {
-    path: '/api/search/:id',
+
+  updateBokmark: {
+    path: '/api/bookmark/:imdbID',
     method: 'PATCH',
   },
-*/
+
   deleteMovie: {
     path: '/api/search/:imdbID',
     method: 'DELETE',
@@ -36,6 +36,11 @@ module.exports = {
 
   deleteBookmark: {
     path: '/api/bookmarks/:imdbID',
+    method: 'DELETE',
+  },
+
+  deleteAllBookmarks: {
+    path: '/api/bookmarks',
     method: 'DELETE',
   },
 };

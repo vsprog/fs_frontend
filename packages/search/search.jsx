@@ -49,6 +49,9 @@ class Search extends React.Component {
       });
     } else {
       this.moviePopup.onStar();
+      //большое число, добавляет в конец списка при фильтре
+      movie = Object.assign(movie, {order: 10000});
+
       createRequest('addMovie', {}, { movie }).then((response) => {
         this.setState({ bookmarks: response.data || [] });
       });

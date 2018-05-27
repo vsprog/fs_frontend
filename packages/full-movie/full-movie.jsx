@@ -46,7 +46,8 @@ class FullMovie extends React.Component {
   }
 
   render() {
-    let { Title, Released, Poster, Genre, Plot, Runtime, imdbID, Actors, Director, Country, Ratings } = this.props.description;
+    const { Title, Released, Genre, Plot, Runtime, Actors, Director, Country, Ratings } = this.props.description;
+    let { Poster } = this.props.description;
     const { toggleMark } = this.props;
     const { active, markImg, trailers } = this.state;
     // иначе будет пытаться загрузить изображения из localhost/search/s

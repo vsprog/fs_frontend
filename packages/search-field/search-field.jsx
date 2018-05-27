@@ -56,8 +56,8 @@ class SearchField extends React.Component {
   }
 
   callGetAlotMovies() {
-    let { pageNumber, totalResults } = this.state;
-    if (totalResults && totalResults <= pageNumber*10) return;
+    const { pageNumber, totalResults } = this.state;
+    if (totalResults && totalResults <= pageNumber * 10) return;
 
     this.props.loadingProcess();
 
