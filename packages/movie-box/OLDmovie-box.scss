@@ -1,0 +1,118 @@
+.movie-box{
+	position: relative;
+
+	display: inline-block;
+
+	width: 800px;
+	height: 250px;
+	margin: 10px;
+
+  cursor: move;
+
+	font: normal 16px "Century Gothic";
+
+	&__front{
+		position: absolute;
+		z-index: 2;
+
+		overflow: hidden;
+
+		width: 100%;
+    height: 100%;
+
+		text-align: right;
+
+		background: #333;
+		background-repeat: no-repeat;
+		background-position: left;
+		background-size: 20% 100%;
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+		backface-visibility: hidden;
+	}
+
+	&__back{
+		overflow: hidden;
+
+		height: 100%;
+		padding: 0 20px;
+
+		transform: rotateX(180deg);
+
+		background: #c3bbbb;
+	}
+
+	&__plot{
+		color: #0087cc;
+
+    font-size: 30px;
+	}
+
+	&__close{
+		top: 10px;
+
+		cursor: pointer;
+
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50%;
+		outline:none;
+		background: rgba(0,0,0,0);
+
+		font-size: 30px;
+	}
+
+	&__watch{
+		top: 80px;
+
+		background-image: url(./watch.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	&__title{
+		position: absolute;
+    right: 0;
+
+		margin: 10px 0;
+		margin-right: 100px;
+		margin-left: 200px;
+
+		color: #fff;
+
+		font-size: 30px;
+		line-height: 35px;
+	}
+
+	&__info{
+		position: absolute;
+    right: 0;
+    bottom: 50px;
+
+		margin-right: 20px;
+
+		color: #fff;
+
+		font-size: 20px;
+	}
+}
+
+.twirl{
+   transition: transform 1s ease-in-out;
+
+   transform-style: preserve-3d;
+}
+
+.twirl:hover {
+  transform: rotateX(180deg);
+}
+
+.btn{
+	position: absolute;
+	right: 15px;
+
+	width: 50px;
+	height: 50px;
+
+	cursor: pointer;
+}

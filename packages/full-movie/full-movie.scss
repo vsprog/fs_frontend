@@ -1,0 +1,160 @@
+@import 'packages/rating/rating.scss';
+
+.fixed-container{
+	position: absolute;
+	z-index: 5;
+	left: 0;
+	top: -100%;
+
+	transition: top .5s ease;
+}
+
+.show{
+	top: 0;
+}
+
+.full-movie{
+	position: fixed;
+
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;    
+  align-content: center;
+
+	min-width: 83%;  
+  
+	height: 100%;
+
+	color: white;
+	background-color: rgba(0,0,0,.3);
+
+	&__trailer-list{
+		min-width: 100%;
+		height: 160px;
+
+		background: #333;
+	}
+
+	&__container{
+		position: relative;
+
+		clear: both;
+
+		width: 100%;
+		min-height: 500px;
+
+		text-align: left;
+
+		background-color: #333;
+
+		font: normal 16px "Century Gothic";
+	}
+
+	&__title{
+		width: 800px;
+		margin: 30px;
+		margin-bottom: 0;
+
+		font-size: 36px;		
+	}
+
+	&__info{
+		margin: 10px 30px 20px;
+	}
+
+	&__poster{
+		float: left;
+
+		width: 200px;
+		height: 300px;
+		margin: 0 30px;
+		margin-bottom: 30px;
+		padding: 10px;
+
+		border: 2px solid #D2D7D7;
+		border-radius: 3px;
+	}
+
+	&__plot{
+		display: inline-block;
+
+		width: 450px;
+
+		font-size: 18px;
+		line-height: 20px;
+	}
+
+	&__trailer{
+		position: absolute;
+    bottom: 30px;
+    left: 90px;
+    padding: 2px;
+
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;    
+    background: rgba(255,255,255,0);    
+    
+    outline: none;
+    cursor: pointer;
+	}
+
+	&__bookmark{
+		right: 90px;
+	}
+
+	&__close{
+		right: 30px;
+
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50%;
+		outline:none;
+		background: rgba(0,0,0,0);
+
+		font-size: 30px;
+	}
+
+}
+
+.button{
+	position: absolute;
+	top: 30px;
+
+	width: 40px;
+	height: 40px;
+
+	cursor: pointer;
+}
+
+.cast{
+	position: absolute;
+	top: 80px;
+	right: 80px;
+
+	width: 100px;
+
+	list-style-position: inside;
+	list-style-type: none;
+
+	&__header{
+		padding: 10px 0;
+
+		font-size: 20px;
+	}
+
+	&__main{
+		font-size: 12px;
+	}
+
+	&__surname{
+		padding: 10px 0;
+
+		font-size: 16px;
+	}
+}
+
+.video{
+	margin: 0 5px;
+}
