@@ -76,7 +76,7 @@ class Bookmarks extends React.Component{
   toggleMark(movie){
     let { bookmarks } = this.state;
     let bookmark = bookmarks.find((item) => item.imdbID === movie.imdbID);
-    let imdbID = movie.imdbID;
+    let { imdbID } = movie;
 
     if (bookmark){
       this.moviePopup.offStar();

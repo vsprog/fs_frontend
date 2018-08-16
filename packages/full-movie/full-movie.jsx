@@ -50,7 +50,7 @@ class FullMovie extends React.Component {
     let { Poster } = this.props.description;
     const { toggleMark } = this.props;
     const { active, markImg, trailers } = this.state;
-    // иначе будет пытаться загрузить изображения из localhost/search/s
+    // иначе будет пытаться загрузить изображения из localhost/search
     let path = location.href;
     path = path.slice(0, path.search(/search|bookmark/g));
 
